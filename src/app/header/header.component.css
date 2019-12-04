@@ -1,0 +1,14 @@
+.header {
+    height: 100px;
+    background-color: lightblue;
+    font-size: 2em;
+}
+
+.nowrapDiv {
+    display: inline-block;
+    *display: inline;
+    /*for IE 7 */
+    *zoom: 1;
+    /*for IE 7 */
+    vertical-align: top;
+}
