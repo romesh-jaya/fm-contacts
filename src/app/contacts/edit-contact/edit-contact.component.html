@@ -1,0 +1,41 @@
+<div style="margin: 20px;">
+    <div style="margin-bottom: 30px;">
+        <button class="btn btn-primary" type="button" (click)="onBackToContacts()">
+            &lt; Back to Contacts
+        </button>
+    </div>
+
+
+
+    <form #contactForm="ngForm">
+        <h4>{{editMode? 'Edit Contact' : 'Add Contact'}}</h4>
+        <p>Name:</p>
+        <input style="margin-bottom: 10px; width: 200px;" [(ngModel)]="name" name="name" #nameEntered="ngModel" required
+            class="form-control">
+        <div *ngIf="!nameEntered.valid && nameEntered.dirty">
+            <span class="help-block feedback">Please enter a name for the contact</span>
+        </div>
+        <p>Email:</p>
+        <input style="margin-bottom: 10px; width: 200px;" type="email" [(ngModel)]="email" #emailAdd="ngModel"
+            name="email" required class="form-control" email>
+        <div *ngIf="!emailAdd.valid && emailAdd.dirty">
+            <span class="help-block feedback">Please enter a valid email address</span>
+        </div>
+        <p>Phone:</p>
+        <input style="margin-bottom: 10px; width: 200px;" type="text" name="phone" pattern="^[0-9]*$"
+            [(ngModel)]="phone" #phoneNum="ngModel" class="form-control">
+        <div *ngIf="!phoneNum.valid && phoneNum.dirty">
+            <span class="help-block feedback">Please enter an optional phone number consisting of numbers</span>
+        </div>
+        <button class="btn btn-primary" style="margin-top: 10px;" type="button" [disabled]="!contactForm.valid"
+            (click)="onSave()">
+            Save
+        </button>
+    </form>
+    <div *ngIf="alert">
+        <hr>
+        <div class="alert">
+            {{alert}}
+        </div>
+    </div>
+</div>
