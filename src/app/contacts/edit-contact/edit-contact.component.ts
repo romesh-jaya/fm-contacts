@@ -16,6 +16,9 @@ export class EditContactComponent implements OnInit {
   email: string;
   phone: number;
   editMode: boolean = false;
+  starClass: string = "glyphicon glyphicon-star-empty";
+  isFavorite: boolean;
+
   constructor(private contactService: ContactService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -37,6 +40,8 @@ export class EditContactComponent implements OnInit {
       this.originalName = contact.name;
       this.phone = contact.phone;
       this.email = contact.email;
+      this.isFavorite = contact.isFavorite;
+      this.setStar();
       this.editMode = true;
     }
     else {
@@ -49,14 +54,14 @@ export class EditContactComponent implements OnInit {
   onSave() {
     let saveSuccess = false;
     if (!this.editMode) {
-      saveSuccess = this.contactService.addContact(new Contact(this.name, this.email, this.phone));
+      saveSuccess = this.contactService.addContact(new Contact(this.name, this.email, this.isFavorite, this.phone));
       if (saveSuccess) {
         this.router.navigate(['/']);
       }
     }
     else {
       saveSuccess = this.contactService.updateContact(this.originalName,
-        new Contact(this.name, this.email, this.phone));
+        new Contact(this.name, this.email, this.isFavorite, this.phone));
       if (saveSuccess) {
         this.router.navigate(['/']);
       }
@@ -68,6 +73,20 @@ export class EditContactComponent implements OnInit {
         this.alert = null;
       }, 3000
       );
+    }
+  }
+
+  onStarClicked() {
+    this.isFavorite = !this.isFavorite;
+    this.setStar();
+  }
+
+  setStar() {
+    if (this.isFavorite) {
+      this.starClass = "glyphicon glyphicon-star checked";
+    }
+    else {
+      this.starClass = "glyphicon glyphicon-star-empty";
     }
   }
 

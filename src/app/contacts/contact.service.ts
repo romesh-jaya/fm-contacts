@@ -39,6 +39,25 @@ export class ContactService {
 
     }
 
+    setFavorite(isFavorite: boolean, name: string) {
+        let indexFound: number = -1;
+        let newContact: Contact;
+
+        this.contacts.forEach((contact, index) => {
+            if (contact.name.toUpperCase() == name.toUpperCase()) {
+                indexFound = index;
+            }
+        });
+
+        if (indexFound >= 0) {
+            newContact = this.contacts[indexFound];
+            newContact.isFavorite = isFavorite;
+            this.saveToLocalStore();
+        }
+        return true;
+
+    }
+
     checkForDuplicateName(name: string) {
         let duplicateExists = false;
 

@@ -9,3 +9,7 @@
     color: white;
     margin-bottom: 15px;
 }
+
+.checked {
+    color: orange;
+}
