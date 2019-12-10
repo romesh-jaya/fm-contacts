@@ -1,5 +1,5 @@
 <div class="row container-box">
-    <div style="float: left; padding: 5px 10px 0px 10px; max-width:12%">
+    <div *ngIf="showStar" style="float: left; padding: 5px 10px 0px 10px; max-width:12%">
         <i [class]=starClass style="font-size:24px;" (click)="onStarClicked()" title="Add to favorites"></i>
     </div>
     <div style="float: left; padding: 10px 10px 5px 10px; width:88%">

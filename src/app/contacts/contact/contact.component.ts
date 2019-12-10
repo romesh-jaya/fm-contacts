@@ -11,6 +11,7 @@ import { ContactService } from '../contact.service';
 })
 export class ContactComponent implements OnInit {
   @Input() contact: Contact;
+  @Input() showStar: boolean = false;
   starClass: string;
 
   constructor(private router: Router, private contactService: ContactService) { }

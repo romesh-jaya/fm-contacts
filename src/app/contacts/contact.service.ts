@@ -88,6 +88,12 @@ export class ContactService {
         return this.contacts.slice();
     }
 
+    getFavorites() {
+        return this.contacts.filter(contact => {
+            return contact.isFavorite == true;
+        })
+    }
+
     getContact(name: string) {
         let matchFound: Contact;
 

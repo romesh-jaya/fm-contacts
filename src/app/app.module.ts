@@ -11,11 +11,13 @@ import { ContactComponent } from './contacts/contact/contact.component';
 import { EditContactComponent } from './contacts/edit-contact/edit-contact.component';
 import { ContactContainerComponent } from './contacts/contact-container/contact-container.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FavoritesComponent } from './contacts/favorites/favorites.component';
 
 const appRoutes: Routes = [
   {
     path: '', component: ContactContainerComponent, children: [
       { path: 'contacts', component: ContactsComponent },
+      { path: 'favorites', component: FavoritesComponent }
     ]
   },
   { path: 'contact-edit', component: EditContactComponent },
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     ContactComponent,
     EditContactComponent,
     ContactContainerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
