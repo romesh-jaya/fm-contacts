@@ -1,15 +1,17 @@
 <div style="margin: 20px;">
-    <button class="btn btn-primary" type="button" (click)="onAddContact()">
-        Add Contact
-    </button>
-    <hr>
-    <nav class="navbar navbar-default" style="background-color: transparent; border-color: transparent;">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active"><a routerLink="/contacts">All Contacts</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <router-outlet></router-outlet>
+    <div>
+        <nav class="navbar navbar-default" style="background-color: transparent; border-color: transparent;">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li routerLinkActive="active"><a routerLink="/contacts">All Contacts</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <i class="fas fa-plus-circle" style="font-size:40px; color: darkblue" (click)="onAddContact()"></i>
+                </ul>
+            </div>
+        </nav>
+        <router-outlet></router-outlet>
+    </div>
+    <p *ngIf="contacts.length == 0">No contacts added. Please add contacts.</p>
 </div>

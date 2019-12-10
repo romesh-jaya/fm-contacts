@@ -1,6 +1,5 @@
 <div>
-    <div *ngIf="contacts">
+    <div>
         <app-contact *ngFor="let contact of contacts" [contact]="contact"></app-contact>
     </div>
-    <p *ngIf="!contacts">No contacts added. Please add your contacts first.</p>
 </div>

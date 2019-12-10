@@ -13,3 +13,16 @@
 .checked {
     color: orange;
 }
+
+.center {
+    min-width: 350px;
+    margin: auto;
+    width: 50%;
+}
+
+.wrapper {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

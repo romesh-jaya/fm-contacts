@@ -8,37 +8,41 @@
 
 
     <form #contactForm="ngForm">
-        <h4>{{editMode? 'Edit Contact' : 'Add Contact'}}</h4>
-        <p>Name:</p>
-        <div class="row" style="margin: 0px!important">
-            <div style="float: left;">
-                <input style="margin-bottom: 10px; width: 200px;" [(ngModel)]="name" name="name" #nameEntered="ngModel"
-                    required class="form-control">
+        <div class="center">
+            <h4>{{editMode? 'Edit Contact' : 'Add Contact'}}</h4>
+            <p>Name:</p>
+            <div class="row" style="margin: 0px!important">
+                <div style="float: left;">
+                    <input style="margin-bottom: 10px; width: 250px;" [(ngModel)]="name" name="name"
+                        #nameEntered="ngModel" required class="form-control">
+                </div>
+                <div>
+                    <i [class]=starClass style="font-size:24px; margin-left: 10px" (click)="onStarClicked()"
+                        title="Add to favorites"></i>
+                </div>
             </div>
-            <div>
-                <i [class]=starClass style="font-size:24px; margin-left: 20px" (click)="onStarClicked()"
-                    title="Add to favorites"></i>
+            <div *ngIf="!nameEntered.valid && nameEntered.dirty">
+                <span class="help-block feedback">Please enter a name for the contact</span>
+            </div>
+            <p>Email:</p>
+            <input style="margin-bottom: 10px; width: 250px;" type="email" [(ngModel)]="email" #emailAdd="ngModel"
+                name="email" required class="form-control" email>
+            <div *ngIf="!emailAdd.valid && emailAdd.dirty">
+                <span class="help-block feedback">Please enter a valid email address</span>
+            </div>
+            <p>Phone:</p>
+            <input style="margin-bottom: 10px; width: 250px;" type="text" name="phone" pattern="^[0-9]*$"
+                [(ngModel)]="phone" #phoneNum="ngModel" class="form-control">
+            <div *ngIf="!phoneNum.valid && phoneNum.dirty">
+                <span class="help-block feedback">Please enter an optional phone number consisting of numbers</span>
+            </div>
+            <div class="wrapper">
+                <button class="btn btn-primary" style="margin-top: 20px; width: 80px;" type="button"
+                    [disabled]="!contactForm.valid" (click)="onSave()">
+                    Save
+                </button>
             </div>
         </div>
-        <div *ngIf="!nameEntered.valid && nameEntered.dirty">
-            <span class="help-block feedback">Please enter a name for the contact</span>
-        </div>
-        <p>Email:</p>
-        <input style="margin-bottom: 10px; width: 200px;" type="email" [(ngModel)]="email" #emailAdd="ngModel"
-            name="email" required class="form-control" email>
-        <div *ngIf="!emailAdd.valid && emailAdd.dirty">
-            <span class="help-block feedback">Please enter a valid email address</span>
-        </div>
-        <p>Phone:</p>
-        <input style="margin-bottom: 10px; width: 200px;" type="text" name="phone" pattern="^[0-9]*$"
-            [(ngModel)]="phone" #phoneNum="ngModel" class="form-control">
-        <div *ngIf="!phoneNum.valid && phoneNum.dirty">
-            <span class="help-block feedback">Please enter an optional phone number consisting of numbers</span>
-        </div>
-        <button class="btn btn-primary" style="margin-top: 10px;" type="button" [disabled]="!contactForm.valid"
-            (click)="onSave()">
-            Save
-        </button>
     </form>
     <div *ngIf="alert">
         <hr>
