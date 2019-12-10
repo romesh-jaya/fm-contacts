@@ -1,11 +1,15 @@
 import { Injectable } from "@angular/core";
+import { Router, Event, NavigationEnd, RoutesRecognized } from '@angular/router';
+import { filter, pairwise } from 'rxjs/operators';
+
 import { Contact } from './contact.model';
 
 @Injectable({ providedIn: "root" })
 export class ContactService {
     contacts: Contact[] = [];
+    previousURL: string;
 
-    constructor() {
+    constructor(private router: Router) {
         const contactsLoaded: [Contact] = JSON.parse(localStorage.getItem('contactsUserData'));
         if (!contactsLoaded) {
             return;
@@ -14,6 +18,16 @@ export class ContactService {
             return;
         }
         this.contacts = contactsLoaded;
+
+        router.events
+            .pipe(
+                filter(event => event instanceof RoutesRecognized),
+                pairwise()
+            )
+            .subscribe((e: any) => {
+                this.previousURL = e[0].urlAfterRedirects;
+                console.log("Previous URL: " + e[0].urlAfterRedirects);
+            });
     }
 
     updateContact(oldName: string, newContact: Contact) {

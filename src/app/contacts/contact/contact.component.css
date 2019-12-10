@@ -7,6 +7,10 @@
     margin: 0;
 }
 
+.container-box:hover {
+    background-color: rgb(245, 245, 245);
+}
+
 .text-overflow-custom {
     white-space: nowrap;
     overflow: hidden;

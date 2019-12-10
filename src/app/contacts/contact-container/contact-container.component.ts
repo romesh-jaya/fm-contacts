@@ -16,9 +16,10 @@ export class ContactContainerComponent implements OnInit {
 
   ngOnInit() {
     if (!this.route.snapshot['_routerState'].url.includes('/favorites')) {
-      this.router.navigate(['/contacts']);
+      this.router.navigate(['/contacts']); //this is for the child router to work correctly
     }
     this.contacts = this.contactService.getContacts();
+
   }
 
   onAddContact() {
