@@ -26,7 +26,6 @@ export class ContactService {
             )
             .subscribe((e: any) => {
                 this.previousURL = e[0].urlAfterRedirects;
-                console.log("Previous URL: " + e[0].urlAfterRedirects);
             });
     }
 

@@ -1,3 +1,25 @@
+
+$mobile: 600px;
+$desktop: 900px;
+
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$mobile}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
 .checked {
     color: orange;
 }
@@ -18,7 +40,21 @@
     padding-right: 10px;
 }
 
-@media only screen and (max-width: 600px) {
+.screen-size-check-email {
+    float: left;
+    color: black;
+}
+.screen-size-check-phone {
+    float: left;
+    color: black;
+}
+.screen-size-check-name {
+    float: left;
+    color: black;
+    font-size: 1.1em;
+}
+
+@include mobile {
     .screen-size-check-email {
         display: none;
     }
@@ -30,7 +66,7 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@include tablet {
     .screen-size-check-phone {
         display: none;
     }
@@ -42,7 +78,7 @@
     }
 }
 
-@media only screen and (min-width: 900px) {
+@include desktop {
     .screen-size-check-phone {
         width: 20%;
         display: block;

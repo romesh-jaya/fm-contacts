@@ -24,7 +24,6 @@ export class EditContactComponent implements OnInit {
   ngOnInit() {
     this.name = this.route.snapshot.params['name'];
     this.setDataForEdit();
-    console.log("ngOnInit");
     this.route.params.subscribe((params: Params) => {
       this.name = params['name'];
       this.setDataForEdit();
@@ -67,14 +66,14 @@ export class EditContactComponent implements OnInit {
     if (!this.editMode) {
       saveSuccess = this.contactService.addContact(new Contact(this.name, this.email, this.isFavorite, this.phone));
       if (saveSuccess) {
-        this.browseToPrevious();
+        this.router.navigate(['/']);
       }
     }
     else {
       saveSuccess = this.contactService.updateContact(this.originalName,
         new Contact(this.name, this.email, this.isFavorite, this.phone));
       if (saveSuccess) {
-        this.browseToPrevious();
+        this.router.navigate(['/']);
       }
     }
 
