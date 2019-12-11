@@ -10,13 +10,16 @@ import { Contact } from '../contact.model';
   styleUrls: ['./edit-contact.component.css']
 })
 export class EditContactComponent implements OnInit {
+  readonly emptyStarClass = "glyphicon glyphicon-star-empty";
+  readonly coloredStarClass = "glyphicon glyphicon-star checked";
+
   originalName: string;
   alert: string;
   name: string;
   email: string;
   phone: number;
   editMode: boolean = false;
-  starClass: string = "glyphicon glyphicon-star-empty";
+  starClass: string = this.emptyStarClass;
   isFavorite: boolean;
 
   constructor(private contactService: ContactService, private router: Router, private route: ActivatedRoute) { }
@@ -93,10 +96,10 @@ export class EditContactComponent implements OnInit {
 
   setStar() {
     if (this.isFavorite) {
-      this.starClass = "glyphicon glyphicon-star checked";
+      this.starClass = this.coloredStarClass;
     }
     else {
-      this.starClass = "glyphicon glyphicon-star-empty";
+      this.starClass = this.emptyStarClass;
     }
   }
 

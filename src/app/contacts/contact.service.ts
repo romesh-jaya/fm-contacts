@@ -19,7 +19,7 @@ export class ContactService {
         }
         this.contacts = contactsLoaded;
 
-        router.events
+        this.router.events
             .pipe(
                 filter(event => event instanceof RoutesRecognized),
                 pairwise()
