@@ -12,6 +12,9 @@ import { EditContactComponent } from './contacts/edit-contact/edit-contact.compo
 import { ContactContainerComponent } from './contacts/contact-container/contact-container.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FavoritesComponent } from './contacts/favorites/favorites.component';
+import { NoWhitespaceDirective } from './shared/no-whitespace.directive';
+import { EmailValidatorDirective } from './shared/email-validator.directive';
+
 
 const appRoutes: Routes = [
   {
@@ -35,7 +38,9 @@ const appRoutes: Routes = [
     EditContactComponent,
     ContactContainerComponent,
     PageNotFoundComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    NoWhitespaceDirective,
+    EmailValidatorDirective
   ],
   imports: [
     BrowserModule,

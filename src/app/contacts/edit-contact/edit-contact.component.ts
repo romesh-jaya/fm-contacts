@@ -66,6 +66,7 @@ export class EditContactComponent implements OnInit {
 
   onSave() {
     let saveSuccess = false;
+    this.name = this.name.trim();
     if (!this.editMode) {
       saveSuccess = this.contactService.addContact(new Contact(this.name, this.email, this.isFavorite, this.phone));
       if (saveSuccess) {
