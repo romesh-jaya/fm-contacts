@@ -15,8 +15,9 @@ export class ContactContainerComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private contactService: ContactService) { }
 
   ngOnInit() {
+    // tslint:disable-next-line
     if (!this.route.snapshot['_routerState'].url.includes('/favorites')) {
-      this.router.navigate(['/contacts']); //this is for the child router to work correctly
+      this.router.navigate(['/contacts']); // this is for the child router to work correctly
     }
     this.contacts = this.contactService.getContacts();
 

@@ -10,25 +10,25 @@ import { Contact } from '../contact.model';
   styleUrls: ['./edit-contact.component.css']
 })
 export class EditContactComponent implements OnInit {
-  readonly emptyStarClass = "glyphicon glyphicon-star-empty";
-  readonly coloredStarClass = "glyphicon glyphicon-star checked";
+  readonly emptyStarClass = 'glyphicon glyphicon-star-empty';
+  readonly coloredStarClass = 'glyphicon glyphicon-star checked';
 
   originalName: string;
   alert: string;
   name: string;
   email: string;
   phone: number;
-  editMode: boolean = false;
+  editMode = false;
   starClass: string = this.emptyStarClass;
   isFavorite: boolean;
 
   constructor(private contactService: ContactService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.name = this.route.snapshot.params['name'];
+    this.name = this.route.snapshot.params.name;
     this.setDataForEdit();
     this.route.params.subscribe((params: Params) => {
-      this.name = params['name'];
+      this.name = params.name;
       this.setDataForEdit();
     });
   }
@@ -46,19 +46,17 @@ export class EditContactComponent implements OnInit {
       this.isFavorite = contact.isFavorite;
       this.setStar();
       this.editMode = true;
-    }
-    else {
-      //if contact is not found, then navigate to the Add contact screen
+    } else {
+      // if contact is not found, then navigate to the Add contact screen
       this.router.navigate(['/contact-edit']);
     }
   }
 
   browseToPrevious() {
-    let prevURL = this.contactService.previousURL;
+    const prevURL = this.contactService.previousURL;
     if (prevURL) {
       this.router.navigate([prevURL]);
-    }
-    else {
+    } else {
       this.router.navigate(['/']);
     }
   }
@@ -72,8 +70,7 @@ export class EditContactComponent implements OnInit {
       if (saveSuccess) {
         this.router.navigate(['/']);
       }
-    }
-    else {
+    } else {
       saveSuccess = this.contactService.updateContact(this.originalName,
         new Contact(this.name, this.email, this.isFavorite, this.phone));
       if (saveSuccess) {
@@ -82,7 +79,7 @@ export class EditContactComponent implements OnInit {
     }
 
     if (!saveSuccess) {
-      this.alert = "Contact " + this.name + " already exists.";
+      this.alert = 'Contact ' + this.name + ' already exists.';
       setTimeout(() => {
         this.alert = null;
       }, 3000
@@ -98,8 +95,7 @@ export class EditContactComponent implements OnInit {
   setStar() {
     if (this.isFavorite) {
       this.starClass = this.coloredStarClass;
-    }
-    else {
+    } else {
       this.starClass = this.emptyStarClass;
     }
   }

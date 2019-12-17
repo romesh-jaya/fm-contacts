@@ -11,7 +11,7 @@
             <div class="row" style="margin: 0px!important">
                 <div style="float: left;">
                     <input style="margin-bottom: 10px; width: 250px;" [(ngModel)]="name" name="name"
-                        #nameEntered="ngModel" noWhitespace class="form-control">
+                        #nameEntered="ngModel" conNoWhitespace class="form-control">
                 </div>
                 <div>
                     <i [class]=starClass style="font-size:24px; margin-left: 10px" (click)="onStarClicked()"
@@ -22,7 +22,7 @@
                 <span class="help-block feedback">Please enter a name for the contact</span>
             </div>
             <p>Email:</p>
-            <input style="margin-bottom: 10px; width: 250px;" emailValidator [(ngModel)]="email" #emailAdd="ngModel"
+            <input style="margin-bottom: 10px; width: 250px;" conEmailValidator [(ngModel)]="email" #emailAdd="ngModel"
                 name="email" required class="form-control">
             <div *ngIf="!emailAdd.valid && emailAdd.dirty">
                 <span class="help-block feedback">Please enter a valid email address</span>

@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Router, Event, NavigationEnd, RoutesRecognized } from '@angular/router';
 import { filter, pairwise } from 'rxjs/operators';
 
 import { Contact } from './contact.model';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class ContactService {
     contacts: Contact[] = [];
     previousURL: string;
@@ -14,7 +14,7 @@ export class ContactService {
         if (!contactsLoaded) {
             return;
         }
-        if (typeof contactsLoaded !== "object") {
+        if (typeof contactsLoaded !== 'object') {
             return;
         }
         this.contacts = contactsLoaded;
@@ -30,16 +30,16 @@ export class ContactService {
     }
 
     updateContact(oldName: string, newContact: Contact) {
-        let indexFound: number = -1;
+        let indexFound = -1;
 
         this.contacts.forEach((contact, index) => {
-            if (contact.name.toUpperCase() == oldName.toUpperCase()) {
+            if (contact.name.toUpperCase() === oldName.toUpperCase()) {
                 indexFound = index;
             }
         });
 
         if (indexFound >= 0) {
-            if (oldName != newContact.name) {//only if a name change has taken place
+            if (oldName !== newContact.name) {// only if a name change has taken place
                 if (!this.checkForDuplicateName(newContact.name)) {
                     return false;
                 }
@@ -53,11 +53,11 @@ export class ContactService {
     }
 
     setFavorite(isFavorite: boolean, name: string) {
-        let indexFound: number = -1;
+        let indexFound = -1;
         let newContact: Contact;
 
         this.contacts.forEach((contact, index) => {
-            if (contact.name.toUpperCase() == name.toUpperCase()) {
+            if (contact.name.toUpperCase() === name.toUpperCase()) {
                 indexFound = index;
             }
         });
@@ -75,7 +75,7 @@ export class ContactService {
         let duplicateExists = false;
 
         this.contacts.forEach((contact) => {
-            if (contact.name.toUpperCase() == name.toUpperCase()) {
+            if (contact.name.toUpperCase() === name.toUpperCase()) {
                 duplicateExists = true;
             }
         });
@@ -103,15 +103,15 @@ export class ContactService {
 
     getFavorites() {
         return this.contacts.filter(contact => {
-            return contact.isFavorite == true;
-        })
+            return contact.isFavorite === true;
+        });
     }
 
     getContact(name: string) {
         let matchFound: Contact;
 
         this.contacts.forEach((contact) => {
-            if (contact.name.toUpperCase() == name.toUpperCase()) {
+            if (contact.name.toUpperCase() === name.toUpperCase()) {
                 matchFound = contact;
             }
         });
@@ -124,7 +124,7 @@ export class ContactService {
         localStorage.setItem('contactsUserData', JSON.stringify(this.contacts));
     }
 
-    //this function is used for sorting contacts by name
+    // this function is used for sorting contacts by name
     compare(contactA, contactB) {
         // Use toUpperCase() to ignore character casing
         const nameA = contactA.name.toUpperCase();

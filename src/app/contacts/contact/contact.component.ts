@@ -11,7 +11,7 @@ import { ContactService } from '../contact.service';
 })
 export class ContactComponent implements OnInit {
   @Input() contact: Contact;
-  @Input() showStar: boolean = false;
+  @Input() showStar = false;
   starClass: string;
 
   constructor(private router: Router, private contactService: ContactService) { }
@@ -31,10 +31,9 @@ export class ContactComponent implements OnInit {
 
   setStar(isFavorite: boolean) {
     if (isFavorite) {
-      this.starClass = "glyphicon glyphicon-star checked";
-    }
-    else {
-      this.starClass = "glyphicon glyphicon-star-empty";
+      this.starClass = 'glyphicon glyphicon-star checked';
+    } else {
+      this.starClass = 'glyphicon glyphicon-star-empty';
     }
   }
 
