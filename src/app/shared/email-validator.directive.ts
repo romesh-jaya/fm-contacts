@@ -1,10 +1,12 @@
 import { Directive } from '@angular/core';
 import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
+/* eslint-disable @typescript-eslint/no-use-before-define */
 @Directive({
     selector: '[conEmailValidator]',
     providers: [{ provide: NG_VALIDATORS, useExisting: EmailValidatorDirective, multi: true }]
 })
+/* eslint-enable @typescript-eslint/no-use-before-define */
 export class EmailValidatorDirective implements Validator {
     validate(control: AbstractControl): { [key: string]: any } | null {
 

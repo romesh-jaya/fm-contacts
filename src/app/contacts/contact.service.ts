@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, Event, NavigationEnd, RoutesRecognized } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { filter, pairwise } from 'rxjs/operators';
 
 import { Contact } from './contact.model';
