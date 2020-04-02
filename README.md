@@ -2,6 +2,12 @@
 
 This application is a simple one to save and display personal contacts. Each contact consists of a Name, Email and Phone Number. There is a feature to show favorite contacts as well. Project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
+Tech Stack used: 
+- Proper validation of emails in Angular
+- Remove whitespace directive
+- Trimming the overflow text
+- Keeping track of previous routes
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
